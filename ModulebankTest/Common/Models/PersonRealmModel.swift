@@ -6,4 +6,18 @@
 //  Copyright © 2020 TEST. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import RealmSwift
+
+class PersonRealmModel: Object {
+    
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var gender: String = ""
+    @objc dynamic var status: String = ""
+    @objc dynamic var imageLink: String = ""
+    @objc dynamic var imageData: Data? = nil
+}
+
+
+

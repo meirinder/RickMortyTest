@@ -10,18 +10,16 @@ import Foundation
 import Alamofire
 
 
-class NetworkService {
+class NetworkService: Session, PersonTakeNetworkServiceProtocol, ImageNetworkServiceProtocol {
     
     private enum Router: String {
         case pagedUrl = "https://rickandmortyapi.com/api/character/?page="
     }
     
-    let sessionManager = Session.default
-    
-    func getPersons(at page: Int, completionHandler: @escaping (PersonResponseModel) -> () ) {
+    func getPersons(at page: Int, completionHandler: @escaping (PersonResponseModel) -> ()) {
         guard let url = URL(string: Router.pagedUrl.rawValue + "\(page)") else { return }
         
-        sessionManager.request(url, method: .get).responseData { (response) in
+        self.request(url, method: .get).responseData { (response) in
             
             guard let data = response.data else {
                 
@@ -30,7 +28,6 @@ class NetworkService {
             }
             
             let decoder = JSONDecoder()
-            
             do {
                 let resultModel = try decoder.decode(PersonResponseModel.self, from: data)
                 completionHandler(resultModel)
@@ -39,5 +36,23 @@ class NetworkService {
             }
         }
     }
+    
+    func fetchImage(with link: String, completionHandler: @escaping (UIImage) -> ()) {
+        guard let url = URL(string: link) else { return }
+        
+        self.request(url, method: .get).responseData { (response) in
+            guard let data = response.data else {
+                
+                assertionFailure("fetchImage - something went wrong")
+                return
+            }
+            
+            if let image = UIImage(data: data) {
+                completionHandler(image)
+            }
+        }
+    }
+    
+    
     
 }

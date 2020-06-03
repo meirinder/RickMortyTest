@@ -6,4 +6,13 @@
 //  Copyright © 2020 TEST. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
+protocol PersonTakeNetworkServiceProtocol {
+    func getPersons(at page: Int, completionHandler: @escaping (PersonResponseModel) -> ())
+}
+
+protocol ImageNetworkServiceProtocol {
+    func fetchImage(with link: String, completionHandler: @escaping (UIImage) -> ())
+}
