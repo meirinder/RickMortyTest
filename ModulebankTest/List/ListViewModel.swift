@@ -17,6 +17,8 @@ class ListViewModel {
     
     weak var displayDelegate: ListViewModelDisplayDelegate?
     
+    var didSelectViewModel: ((PersonCellViewModel) -> ())?
+    
     private var cellViewModels: [PersonCellViewModel] = []
     private let networkService: PersonTakeNetworkServiceProtocol
     private let dataBaseService: DataBaseServicePersonReadWriteProtocol
@@ -27,9 +29,10 @@ class ListViewModel {
         return "RickAndMortyCell"
     }
     
-    init() {
-        networkService = NetworkService()
-        dataBaseService = DataBaseService()
+    init(networkService: PersonTakeNetworkServiceProtocol,
+         dataBaseService: DataBaseServicePersonReadWriteProtocol) {
+        self.networkService = networkService
+        self.dataBaseService = dataBaseService
     }
     
     func updatePageCell() {
@@ -68,8 +71,16 @@ class ListViewModel {
         return cellViewModels[index]
     }
     
+    func navigationTitle() -> String {
+        return "List"
+    }
+    
     func cellCount() -> Int {
         return cellViewModels.count
+    }
+    
+    func didSelectCell(at index: Int) {
+        didSelectViewModel?(cellViewModels[index])
     }
     
     private func setupCellViewModels(model: PersonResponseModel) {
@@ -94,7 +105,10 @@ class ListViewModel {
                 let name = result.name,
                 let gender = result.gender,
                 let status = result.status,
-                let imageLink = result.image else {
+                let imageLink = result.image,
+                let species = result.species,
+                let originName = result.origin?.name,
+                let locationName = result.location?.name else {
                     return
             }
             
@@ -103,6 +117,9 @@ class ListViewModel {
                                 gender: gender,
                                 status: status,
                                 imageLink: imageLink,
+                                species: species,
+                                originName: originName,
+                                locationName: locationName,
                                 image: nil)
             
             resultPersons.append(person)

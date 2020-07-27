@@ -12,6 +12,7 @@ import Foundation
 struct PersonResponseModel: Codable {
     let info: Info?
     let results: [Result]?
+    
 }
 
 // MARK: - Info

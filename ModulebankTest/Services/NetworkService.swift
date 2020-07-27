@@ -52,7 +52,4 @@ class NetworkService: Session, PersonTakeNetworkServiceProtocol, ImageNetworkSer
             }
         }
     }
-    
-    
-    
 }

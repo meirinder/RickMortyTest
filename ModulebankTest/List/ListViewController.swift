@@ -9,7 +9,7 @@
 import UIKit
 
 class ListViewController: UIViewController {
-     
+    
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: ListViewModel!
@@ -17,7 +17,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = ListViewModel()
+        navigationItem.title = viewModel.navigationTitle()
         
         viewModel.displayDelegate = self
         viewModel.updatePageCell()
@@ -43,6 +43,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == viewModel.cellCount() - 1 {
             self.viewModel.updatePageCell()
         }
+    } 
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectCell(at: indexPath.row)
     }
 }
 

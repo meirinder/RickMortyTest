@@ -59,11 +59,13 @@ class DataBaseService: DataBaseServicePersonReadWriteProtocol {
     private func convertRealmToModel(realmModel: PersonRealmModel) -> Person {
         
         let person = Person(id: realmModel.id,
-                      name: realmModel.name,
-                      gender: realmModel.gender,
-                      status: realmModel.status,
-                      imageLink: realmModel.imageLink,
-                      image: nil)
+                            name: realmModel.name,
+                            gender: realmModel.gender,
+                            status: realmModel.status,
+                            imageLink: realmModel.imageLink,
+                            species: realmModel.species,
+                            originName: realmModel.originName,
+                            locationName: realmModel.locationName)
         
         if let imageData = realmModel.imageData {
             person.image = UIImage(data: imageData)
@@ -79,6 +81,9 @@ class DataBaseService: DataBaseServicePersonReadWriteProtocol {
         realmModel.id = model.id
         realmModel.imageLink = model.imageLink
         realmModel.status = model.status
+        realmModel.species = model.species ?? ""
+        realmModel.originName = model.originName ?? ""
+        realmModel.locationName = model.locationName ?? ""
         realmModel.imageData = model.image?.pngData()
         
         return realmModel

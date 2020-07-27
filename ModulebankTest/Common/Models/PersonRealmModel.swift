@@ -15,6 +15,9 @@ class PersonRealmModel: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var gender: String = ""
     @objc dynamic var status: String = ""
+    @objc dynamic var species: String = ""
+    @objc dynamic var originName: String = ""
+    @objc dynamic var locationName: String = ""
     @objc dynamic var imageLink: String = ""
     @objc dynamic var imageData: Data? = nil
 }
