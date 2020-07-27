@@ -8,9 +8,11 @@
 
 import UIKit
 
+
 protocol ImageStoreServiceProtocol {
     func fetchImage(for link: String, comletionHandler: @escaping (UIImage) -> ())
 }
+
 
 class DefaultImageStoreService: ImageStoreServiceProtocol {
     

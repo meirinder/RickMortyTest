@@ -47,5 +47,4 @@ class DetailViewModel {
     func personStatus() -> String {
         return person.status
     }
-    
 }

@@ -13,6 +13,7 @@ protocol PersonTakeNetworkServiceProtocol {
     func getPersons(at page: Int, completionHandler: @escaping (PersonResponseModel) -> ())
 }
 
+
 protocol ImageNetworkServiceProtocol {
     func fetchImage(with link: String, completionHandler: @escaping (UIImage) -> ())
 }

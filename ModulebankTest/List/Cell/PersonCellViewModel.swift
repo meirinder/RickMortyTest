@@ -52,6 +52,5 @@ class PersonCellViewModel {
     
     func personImage() -> UIImage? {
         return person.image
-    }
-    
+    } 
 }

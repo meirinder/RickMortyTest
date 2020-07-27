@@ -9,10 +9,13 @@
 import UIKit
 import RealmSwift
 
+
 protocol DataBaseServicePersonReadWriteProtocol {
+    
     func savePersons(persons: [Person])
     func persons() -> [Person]
 }
+
 
 class DataBaseService: DataBaseServicePersonReadWriteProtocol {
     
@@ -38,7 +41,6 @@ class DataBaseService: DataBaseServicePersonReadWriteProtocol {
         } catch let error {
             print(error.localizedDescription)
         }
-        
     }
     
     func persons() -> [Person] {
@@ -87,6 +89,5 @@ class DataBaseService: DataBaseServicePersonReadWriteProtocol {
         realmModel.imageData = model.image?.pngData()
         
         return realmModel
-    }
-    
+    } 
 }

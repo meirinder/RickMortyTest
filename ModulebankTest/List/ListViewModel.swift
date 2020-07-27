@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 protocol ListViewModelDisplayDelegate: class {
     func listViewModelUpdateCell(viewModel: ListViewModel)
 }
@@ -31,6 +32,7 @@ class ListViewModel {
     
     init(networkService: PersonTakeNetworkServiceProtocol,
          dataBaseService: DataBaseServicePersonReadWriteProtocol) {
+        
         self.networkService = networkService
         self.dataBaseService = dataBaseService
     }
@@ -125,7 +127,6 @@ class ListViewModel {
             resultPersons.append(person)
         })
         return resultPersons
-    }
-     
+    } 
 }
  

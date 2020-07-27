@@ -8,9 +8,11 @@
 
 import UIKit
 
+
 protocol RefreshableDelegate: class {
     func personTableViewCellRefreshCell(cell: PersonTableViewCell)
 }
+
 
 class PersonTableViewCell: UITableViewCell {
     
@@ -28,7 +30,6 @@ class PersonTableViewCell: UITableViewCell {
             
             viewModel.displayDelegate = self
             
-            
             self.nameLabel.text = viewModel.personName()
             self.statusLabel.text = viewModel.personStatus()
             self.genderLabel.text = viewModel.personGender()
@@ -43,11 +44,9 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
-     
 }
 
-extension PersonTableViewCell: PerconCellViewModelDisplayDelegate {
-    
+extension PersonTableViewCell: PerconCellViewModelDisplayDelegate { 
     func personCellViewModel(viewModel: PersonCellViewModel, set image: UIImage) {
         refreshDelegate?.personTableViewCellRefreshCell(cell: self)
     }

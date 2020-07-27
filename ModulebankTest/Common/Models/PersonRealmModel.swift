@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 
+
 class PersonRealmModel: Object {
     
     @objc dynamic var id: Int = 0

@@ -8,20 +8,20 @@
 
 import Foundation
  
-// MARK: - PersonResponseModel
+
 struct PersonResponseModel: Codable {
     let info: Info?
     let results: [Result]?
     
 }
 
-// MARK: - Info
+
 struct Info: Codable {
     let count, pages: Int?
     let next, prev: String?
 }
 
-// MARK: - Result
+
 struct Result: Codable {
     let id: Int?
     let name: String?
@@ -36,7 +36,7 @@ struct Result: Codable {
     let created: String?
 }
 
-// MARK: - Location
+
 struct Location: Codable {
     let name: String?
     let url: String?

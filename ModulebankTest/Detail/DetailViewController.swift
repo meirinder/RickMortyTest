@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DetailViewController: UIViewController {
     
     var viewModel: DetailViewModel!
@@ -38,5 +39,4 @@ class DetailViewController: UIViewController {
         statusLabel.text = viewModel.personStatus()
         speciesLabel.text = viewModel.personSpecies()
     }
-    
 }

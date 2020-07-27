@@ -12,12 +12,11 @@ import UIKit
 class AppCoordinator: Coordinatable {
   
   private let navigationController: UINavigationController
-  
   private var coreCoordinator: Coordinatable!
   
   required init(navigationController: UINavigationController) {
-    self.navigationController = navigationController
     
+    self.navigationController = navigationController 
     setUpCoordinators()
   }
     
